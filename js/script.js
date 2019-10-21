@@ -62,21 +62,23 @@ var dogs = [
 		height : 35, //cm
 		age : 5,
 		photo : 'assets/pug.jpg',
-		job : 'Dying slowly and painfully'
+		job : 'Dying slowly and painfully because \'they look cute\''
 	} // The last array item does not need a comma at the end
 ];
-
-var i = 0;
 
 // Calls the first photo from the array
 document.getElementById('dogsContainer').innerHTML = '<h3 class="jumbotron col-12 bg-dark text-center">' + dogs[0].name + '</h3>' + '<img class="img-thumbnail" src="' + dogs[0].photo + '" alt="Dog"> <br>';
 
 // --- Functions
-
 // Function that clears the divs
 function clear(){
 	document.getElementById('dogsContainer').innerHTML = '';
 	document.getElementById('dogsContainerNoStyle').innerHTML = '';
+}
+// A function that clears the field to change dog names
+function fieldReset() {
+	document.getElementById('oldName').value = '';
+	document.getElementById('newName').value = '';
 }
 
 // Function stores all of the styling and displayed information for dogs being called on
@@ -116,8 +118,8 @@ function listDogsJackRussell() {
 	for(i=0; i < dogs.length; i++){
 		if(dogs[i].breed === 'Jack Russell Terrior') {
 			allDogs();
-		 }
-	 }
+		}
+	}
 }
 
 // Function called to find whether the dog is a big dog
@@ -125,8 +127,8 @@ function listDogsLarge() {
 	for(i=0; i < dogs.length; i++){
 		if(dogs[i].height >= 56) {
 			allDogs();
-		 }
-	 }
+		}
+	}
 }
 
 // Function called to find whether the dog is a small dog
@@ -134,11 +136,9 @@ function listDogsSmall() {
 	for(i=0; i < dogs.length; i++){
 		if(dogs[i].height < 55) {
 			allDogs();
-		 }
-	 }
+		}
+	}
 }
-
-
 
 document.getElementById('allDogs').addEventListener('click', function(){
 	clear();
@@ -187,6 +187,25 @@ document.getElementById('racingDogs').addEventListener('click', function(){
 			'</div>';
 		}
 	}
+});
+
+// --- Changing Dog's name
+document.getElementById('changeName').addEventListener('click', function() {
+	// Finds the inputted name by the user and stores it as variable
+	var oldName = document.getElementById('oldName').value;
+	// Uses new inputted name by the variable and stores it
+	var newName = document.getElementById('newName').value;
+	console.log(oldName, newName);
+	// Loop used to go through array and find the matching old name
+	for(var i = 0; i < dogs.length; i++) {
+    	// If oldName variable matches another dog's in the data base
+    	if (oldName === dogs[i].name){
+    		// Dogs name is changed to the new inputted name
+    		dogs[i].name = newName;
+    	}
+   	}
+   	// Clears the fields for user to edit more names
+   	fieldReset();
 });
 
 
