@@ -150,7 +150,6 @@ document.getElementById('allDogs').addEventListener('click', function(){
 // Button to calls items from my array that relate to a set criteria
 document.getElementById('jackRussell').addEventListener('click', function(){
 	clear();
-	console.log(dogs);
 	listDogsJackRussell();
 });
 
@@ -158,14 +157,12 @@ document.getElementById('jackRussell').addEventListener('click', function(){
 // Button that only shows tall dogs
 document.getElementById('largeDog').addEventListener('click', function(){
 	clear();
-	console.log(dogs);
 	listDogsLarge();
 });
 
 // --- Button that shows all small dogs
 document.getElementById('smallDog').addEventListener('click', function(){
 	clear();
-	console.log(dogs);
 	listDogsSmall();
 
 });
@@ -173,7 +170,6 @@ document.getElementById('smallDog').addEventListener('click', function(){
 // --- Button to show all racing dogs
 document.getElementById('racingDogs').addEventListener('click', function(){
 	clear();
-	console.log(dogs);
 	document.getElementById('dogsContainerNoStyle').innerHTML +='<h2>Racing Dogs</h2>'; 
 
 	for(var i = 0; i < dogs.length; i++){
