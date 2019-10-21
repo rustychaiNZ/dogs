@@ -106,85 +106,56 @@ function allDogs() {
 	* Will run for as long as the array is in length
 	* Lists all images after the first
 */
+
 // Function that is called to display all information about the dogs
-function listDogs(){
+document.getElementById('allDogs').addEventListener('click', function(){
+	clear();
+	// function for information about dogs being called
 	for (i=0;i < dogs.length; i++) {
 		allDogs();
 	}
-}
+});
 
-// function called to find whether the dog is a jack Russell
-function listDogsJackRussell() {
+// --- Displays my personal dog
+// Button to calls items from my array that are Jack Russell
+document.getElementById('jackRussell').addEventListener('click', function(){
+	clear();
 	for(i=0; i < dogs.length; i++){
 		if(dogs[i].breed === 'Jack Russell Terrior') {
 			allDogs();
 		}
 	}
-}
-
-// Function called to find whether the dog is a big dog
-function listDogsLarge() {
-	for(i=0; i < dogs.length; i++){
-		if(dogs[i].height >= 56) {
-			allDogs();
-		}
-	}
-}
-
-// Function called to find whether the dog is a small dog
-function listDogsSmall() {
-	for(i=0; i < dogs.length; i++){
-		if(dogs[i].height < 55) {
-			allDogs();
-		}
-	}
-}
-
-document.getElementById('allDogs').addEventListener('click', function(){
-	clear();
-	// function for information about dogs being called
-	listDogs();
-});
-
-// --- Displays my personal dog
-// Button to calls items from my array that relate to a set criteria
-document.getElementById('jackRussell').addEventListener('click', function(){
-	clear();
-	listDogsJackRussell();
 });
 
 // --- Shows all large dogs
 // Button that only shows tall dogs
 document.getElementById('largeDog').addEventListener('click', function(){
 	clear();
-	listDogsLarge();
+	for(i=0; i < dogs.length; i++){
+		if(dogs[i].height >= 56) {
+			allDogs();
+		}
+	}
 });
 
 // --- Button that shows all small dogs
 document.getElementById('smallDog').addEventListener('click', function(){
 	clear();
-	listDogsSmall();
-
+	for(i=0; i < dogs.length; i++){
+		if(dogs[i].height < 55) {
+			allDogs();
+		}
+	}
 });
 
 // --- Button to show all racing dogs
 document.getElementById('racingDogs').addEventListener('click', function(){
 	clear();
-	document.getElementById('dogsContainerNoStyle').innerHTML +='<h2>Racing Dogs</h2>'; 
-
-	for(var i = 0; i < dogs.length; i++){
+	document.getElementById('dogsContainer').innerHTML +='<h2 class="col-12">Racing Dogs</h2>'; 
+	for(i=0; i < dogs.length; i++){
 		// If the script finds a jack Russell in the array, it will display their name, id, image and other information displayed in the array
 		if(dogs[i].job.indexOf('Racing') > (-1) ) {
-			document.getElementById('dogsContainerNoStyle').innerHTML +=
-			'<div class="row align-items-center">' +
-			'<div class="col-6">' +
-			'<img class="img-thumbnail" src="' + dogs[i].photo + '" alt="Dog">' + 
-			'</div>' +
-			'<div class="col-6 jumbotron bg-custom">' + 
-			'<h3>' + dogs[i].name + '</h3>' + 
-			'<b>Breed: ' + dogs[i].breed + '</b>' + '<br>' + '<b>ID#:</b> ' + dogs[i].id + '<br>' + '<b>Breed:</b> ' + dogs[i].breed + '<br>' + '<b>Colour:</b> ' + dogs[i].color + '<br>' + '<b>Height (cm):</b> ' + dogs[i].height + '<br>' + '<b>Age(Years): </b>' + dogs[i].age + '<br>' +
-			'</div>' +			
-			'</div>';
+			allDogs();
 		}
 	}
 });
@@ -207,37 +178,3 @@ document.getElementById('changeName').addEventListener('click', function() {
    	// Clears the fields for user to edit more names
    	fieldReset();
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
